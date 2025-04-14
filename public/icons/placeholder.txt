@@ -1,0 +1,1 @@
+This folder will contain macOS-style icons for the dock and desktop.
