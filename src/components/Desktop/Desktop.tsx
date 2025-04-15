@@ -66,7 +66,7 @@ const Desktop: React.FC<DesktopProps> = ({ isDarkMode }) => {
         {desktopIcons.map((icon, index) => (
           <motion.div
             key={index}
-            className="absolute flex flex-col items-center justify-center w-20 h-24 cursor-pointer"
+            className="absolute flex flex-col items-center justify-center w-20 h-24 cursor-pointer mt-4!"
             style={{ left: icon.position.x, top: icon.position.y }}
             whileHover={{ scale: 1.05 }}
             onClick={() => handleOpenWindow(icon.name)}
@@ -81,7 +81,7 @@ const Desktop: React.FC<DesktopProps> = ({ isDarkMode }) => {
                 className="drop-shadow-md"
               />
             </div>
-            <span className={`mt-2 text-xs font-medium text-center px-2 py-1 rounded ${isDarkMode ? 'bg-black/40 text-white' : 'bg-white/50 text-black'} backdrop-blur-sm shadow-sm`}>
+            <span className="mt-2 text-xs font-medium text-center text-white drop-shadow-[0_1px_1px_rgba(0,0,0,0.8)]">
               {icon.name}
             </span>
           </motion.div>
