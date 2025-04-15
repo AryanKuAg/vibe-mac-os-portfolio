@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import { motion } from 'framer-motion';
+import Image from 'next/image';
 
 interface DockProps {
   isDarkMode: boolean;
@@ -24,8 +25,14 @@ const DockIcon: React.FC<DockIconProps> = ({ name, icon, onClick }) => {
       onHoverEnd={() => setIsHovered(false)}
       onClick={onClick}
     >
-      <div className="w-12 h-12 relative flex items-center justify-center text-3xl">
-        {icon}
+      <div className="w-12 h-12 relative flex items-center justify-center">
+        <Image
+          src={icon}
+          alt={name}
+          width={48}
+          height={48}
+          className="rounded-lg"
+        />
       </div>
       {isHovered && (
         <motion.div
@@ -42,19 +49,19 @@ const DockIcon: React.FC<DockIconProps> = ({ name, icon, onClick }) => {
 };
 
 const Dock: React.FC<DockProps> = ({ isDarkMode }) => {
-  // Define dock icons with emoji icons for simplicity
+  // Define dock icons with SVG icons
   const dockIcons = [
-    { name: 'Finder', icon: '📂' },  // 📂
-    { name: 'Safari', icon: '🌎' },  // 🌎
-    { name: 'Mail', icon: '✉️' },    // ✉️
-    { name: 'Messages', icon: '💬' }, // 💬
-    { name: 'Maps', icon: '🗺️' }, // 🗺️
-    { name: 'Photos', icon: '📷' },   // 📷
-    { name: 'Calendar', icon: '📅' },  // 📅
-    { name: 'Notes', icon: '📝' },    // 📝
-    { name: 'Terminal', icon: '🖥️' }, // 🖥️
-    { name: 'App Store', icon: '💾' }, // 💾
-    { name: 'Settings', icon: '⚙️' }   // ⚙️
+    { name: 'Finder', icon: '/icons/dock/finder.svg' },
+    { name: 'Safari', icon: '/icons/dock/safari.svg' },
+    { name: 'Mail', icon: '/icons/dock/mail.svg' },
+    { name: 'Messages', icon: '/icons/dock/messages.svg' },
+    { name: 'Maps', icon: '/icons/dock/maps.svg' },
+    { name: 'Photos', icon: '/icons/dock/photos.svg' },
+    { name: 'Calendar', icon: '/icons/dock/calendar.svg' },
+    { name: 'Notes', icon: '/icons/dock/notes.svg' },
+    { name: 'Terminal', icon: '/icons/dock/terminal.svg' },
+    { name: 'App Store', icon: '/icons/dock/appstore.svg' },
+    { name: 'Settings', icon: '/icons/dock/settings.svg' }
   ];
 
   return (

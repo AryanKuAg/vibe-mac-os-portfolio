@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import { motion } from 'framer-motion';
+import Image from 'next/image';
 import Window from '../../components/Window/Window';
 import AboutMe from '../../components/Apps/AboutMe';
 import Projects from '../../components/Apps/Projects';
@@ -25,19 +26,19 @@ const Desktop: React.FC<DesktopProps> = ({ isDarkMode }) => {
   const desktopIcons: DesktopIcon[] = [
     {
       name: 'About Me',
-      icon: '👤',
+      icon: '/icons/desktop/about.svg',
       position: { x: 20, y: 20 },
       appComponent: <AboutMe isDarkMode={isDarkMode} />
     },
     {
       name: 'Projects',
-      icon: '💼',
+      icon: '/icons/desktop/projects.svg',
       position: { x: 20, y: 100 },
       appComponent: <Projects isDarkMode={isDarkMode} />
     },
     {
       name: 'Contact',
-      icon: '✉️',
+      icon: '/icons/desktop/contact.svg',
       position: { x: 20, y: 180 },
       appComponent: <Contact isDarkMode={isDarkMode} />
     }
@@ -80,8 +81,14 @@ const Desktop: React.FC<DesktopProps> = ({ isDarkMode }) => {
             onClick={() => handleOpenWindow(icon.name)}
             onDoubleClick={() => handleOpenWindow(icon.name)}
           >
-            <div className={`w-12 h-12 flex items-center justify-center text-2xl rounded-lg ${isDarkMode ? 'bg-black/20' : 'bg-white/20'} backdrop-blur-sm`}>
-              {icon.icon}
+            <div className={`w-12 h-12 flex items-center justify-center rounded-lg ${isDarkMode ? 'bg-black/20' : 'bg-white/20'} backdrop-blur-sm`}>
+              <Image
+                src={icon.icon}
+                alt={icon.name}
+                width={48}
+                height={48}
+                className="rounded-lg"
+              />
             </div>
             <span className={`mt-1 text-xs text-center px-1 rounded ${isDarkMode ? 'bg-black/30 text-white' : 'bg-white/30 text-black'} backdrop-blur-sm`}>
               {icon.name}
