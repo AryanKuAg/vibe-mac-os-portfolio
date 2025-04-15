@@ -102,9 +102,7 @@ const Desktop: React.FC<DesktopProps> = ({ isDarkMode }) => {
               initialPosition={{ x: 100 + index * 50, y: 100 + index * 30 }}
               initialSize={{ width: 900, height: 600 }}
               isDarkMode={isDarkMode}
-            >
-              {icon.appComponent}
-            </ChromeWindow>
+            />
           );
         } else {
           return (
