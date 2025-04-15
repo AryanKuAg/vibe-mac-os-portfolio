@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useRef, useEffect, KeyboardEvent } from 'react';
+import { useState, useRef } from 'react';
 import { motion, useDragControls, PanInfo } from 'framer-motion';
 import Image from 'next/image';
 

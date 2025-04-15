@@ -17,7 +17,7 @@ interface DockIconProps {
   onClick?: () => void;
 }
 
-const DockIcon: React.FC<DockIconProps> = ({ name, icon, mouseX, dockWidth, index, onClick }) => {
+const DockIcon: React.FC<DockIconProps> = ({ name, icon, mouseX, onClick }) => {
   const [isHovered, setIsHovered] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
   const [position, setPosition] = useState({ center: 0, width: 0 });
@@ -28,11 +28,11 @@ const DockIcon: React.FC<DockIconProps> = ({ name, icon, mouseX, dockWidth, inde
       if (ref.current && ref.current.parentElement) {
         const iconRect = ref.current.getBoundingClientRect();
         const dockRect = ref.current.parentElement.getBoundingClientRect();
-        
+
         // Calculate the center position of this icon RELATIVE TO THE DOCK
         const relativeLeft = iconRect.left - dockRect.left;
         const relativeCenter = relativeLeft + (iconRect.width / 2);
-        
+
         setPosition({
           center: relativeCenter,
           width: iconRect.width
@@ -42,9 +42,9 @@ const DockIcon: React.FC<DockIconProps> = ({ name, icon, mouseX, dockWidth, inde
 
     // Run update on mount and any time the window might resize
     updatePosition();
-    
+
     window.addEventListener('resize', updatePosition);
-    
+
     // Create a ResizeObserver to monitor size changes
     const resizeObserver = new ResizeObserver(updatePosition);
     if (ref.current) {
@@ -53,18 +53,18 @@ const DockIcon: React.FC<DockIconProps> = ({ name, icon, mouseX, dockWidth, inde
     if (ref.current && ref.current.parentElement) {
       resizeObserver.observe(ref.current.parentElement);
     }
-    
+
     // Cleanup
     return () => {
       window.removeEventListener('resize', updatePosition);
       resizeObserver.disconnect();
     };
   }, []);
-  
+
   // Calculate distance from mouse position to icon center
   // If mouseX is null (not hovering over dock), distance is large to ensure no magnification
   const distance = mouseX === null ? 1000 : Math.abs(mouseX - position.center);
-  
+
   // Calculate scale based on distance using an exponential function
   const scale = mouseX === null
     ? 1 // Default scale when mouse leaves the dock
@@ -149,15 +149,15 @@ const Dock: React.FC<DockProps> = ({ isDarkMode }) => {
         setDockWidth(dockRef.current.getBoundingClientRect().width);
       }
     };
-    
+
     updateDockWidth();
-    
+
     window.addEventListener('resize', updateDockWidth);
     const resizeObserver = new ResizeObserver(updateDockWidth);
     if (dockRef.current) {
       resizeObserver.observe(dockRef.current);
     }
-    
+
     return () => {
       window.removeEventListener('resize', updateDockWidth);
       resizeObserver.disconnect();

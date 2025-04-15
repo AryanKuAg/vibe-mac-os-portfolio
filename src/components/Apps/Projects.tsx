@@ -68,7 +68,7 @@ const Projects: React.FC<ProjectsProps> = ({ isDarkMode }) => {
           <div className="max-w-3xl">
             <h2 className="text-3xl font-bold mb-3">My Projects</h2>
             <p className={`text-lg ${isDarkMode ? 'text-gray-300' : 'text-gray-600'}`}>
-              Here are some of the projects I've worked on as a MERN stack developer with 4 years of experience.
+              Here are some of the projects I&apos;ve worked on as a MERN stack developer with 4 years of experience.
             </p>
           </div>
         </div>

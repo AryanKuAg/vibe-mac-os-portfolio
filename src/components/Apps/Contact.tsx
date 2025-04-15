@@ -2,7 +2,6 @@
 
 import { useState } from 'react';
 import { motion } from 'framer-motion';
-import Image from 'next/image';
 
 interface ContactProps {
   isDarkMode: boolean;
@@ -11,36 +10,12 @@ interface ContactProps {
 const Contact: React.FC<ContactProps> = ({ isDarkMode }) => {
   const [activeTab, setActiveTab] = useState('all');
   const [selectedContact, setSelectedContact] = useState<number | null>(null);
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    subject: '',
-    message: ''
-  });
 
   const contacts = [
     { id: 1, name: 'John Doe', email: 'john.doe@example.com', phone: '+1 (555) 123-4567', role: 'Frontend Developer', favorite: true },
     { id: 2, name: 'Jane Smith', email: 'jane.smith@example.com', phone: '+1 (555) 987-6543', role: 'UI/UX Designer', favorite: false },
     { id: 3, name: 'Alex Johnson', email: 'alex.j@example.com', phone: '+1 (555) 456-7890', role: 'Project Manager', favorite: true },
   ];
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    const { name, value } = e.target;
-    setFormData(prev => ({ ...prev, [name]: value }));
-  };
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    // In a real app, you would handle form submission here
-    console.log('Form submitted:', formData);
-    alert('Message sent! (This is a demo)');
-    setFormData({
-      name: '',
-      email: '',
-      subject: '',
-      message: ''
-    });
-  };
 
   return (
     <motion.div
@@ -176,7 +151,7 @@ const Contact: React.FC<ContactProps> = ({ isDarkMode }) => {
               {/* Message form */}
               <div className={`p-4! rounded-lg border ${isDarkMode ? 'bg-[#2c2c2c] border-gray-700' : 'bg-white border-gray-200'}`}>
                 <h3 className="font-medium mb-3!">Send Message</h3>
-                <form>
+                <form onSubmit={(e) => e.preventDefault()}>
                   <div className="mb-3!">
                     <textarea
                       placeholder="Type your message here..."
