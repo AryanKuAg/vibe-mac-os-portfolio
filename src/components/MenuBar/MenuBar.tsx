@@ -73,15 +73,28 @@ const MenuBar: React.FC<MenuBarProps> = ({ isDarkMode, toggleDarkMode }) => {
       </div>
 
       {/* Right side - Status icons */}
-      <div className="flex items-center h-full mr-4!">
-        {/* Control Center */}
+      <div className="flex items-center h-full mr-4! space-x-1.5">
+        {/* Bluetooth */}
         <div className="px-1.5! h-full flex items-center justify-center cursor-pointer hover:bg-white/10">
           <div className="w-4 h-4 relative">
             <Image
-              src="/icons/control-center.svg"
-              alt="Control Center"
+              src="/icons/bluetooth-icons8.png"
+              alt="Bluetooth"
               fill
-              className={isDarkMode ? "brightness-200" : ""}
+              className="brightness-0 invert"
+            />
+          </div>
+        </div>
+
+
+        {/* Display */}
+        <div className="px-1.5! h-full flex items-center justify-center cursor-pointer hover:bg-white/10">
+          <div className="w-4 h-4 relative">
+            <Image
+              src="/icons/display-icons8.png"
+              alt="Display"
+              fill
+              className="brightness-0 invert"
             />
           </div>
         </div>
@@ -90,10 +103,10 @@ const MenuBar: React.FC<MenuBarProps> = ({ isDarkMode, toggleDarkMode }) => {
         <div className="px-1.5! h-full flex items-center justify-center cursor-pointer hover:bg-white/10">
           <div className="w-4 h-4 relative">
             <Image
-              src="/icons/user-profile.svg"
+              src="/icons/user-profile-icons8.png"
               alt="User Profile"
               fill
-              className={isDarkMode ? "brightness-200" : ""}
+              className="brightness-0 invert"
             />
           </div>
         </div>
@@ -102,10 +115,10 @@ const MenuBar: React.FC<MenuBarProps> = ({ isDarkMode, toggleDarkMode }) => {
         <div className="px-1.5! h-full flex items-center justify-center cursor-pointer hover:bg-white/10">
           <div className="w-4 h-4 relative">
             <Image
-              src="/icons/screen.svg"
+              src="/icons/screen-icons8.png"
               alt="Screen"
               fill
-              className={isDarkMode ? "brightness-200" : ""}
+              className="brightness-0 invert"
             />
           </div>
         </div>
@@ -117,7 +130,7 @@ const MenuBar: React.FC<MenuBarProps> = ({ isDarkMode, toggleDarkMode }) => {
               src="/icons/siri.svg"
               alt="Siri"
               fill
-              className={isDarkMode ? "brightness-200" : ""}
+              className="brightness-0 invert"
             />
           </div>
         </div>
@@ -126,10 +139,10 @@ const MenuBar: React.FC<MenuBarProps> = ({ isDarkMode, toggleDarkMode }) => {
         <div onClick={toggleDarkMode} className="px-1.5! h-full flex items-center justify-center cursor-pointer hover:bg-white/10">
           <div className="w-4 h-4 relative">
             <Image
-              src={isDarkMode ? "/icons/sun.svg" : "/icons/moon.svg"}
-              alt={isDarkMode ? "Light Mode" : "Dark Mode"}
+              src="/icons/moon-icons8.png"
+              alt="Dark Mode"
               fill
-              className={isDarkMode ? "brightness-200" : ""}
+              className="brightness-0 invert"
             />
           </div>
         </div>
@@ -138,10 +151,10 @@ const MenuBar: React.FC<MenuBarProps> = ({ isDarkMode, toggleDarkMode }) => {
         <div className="px-1.5! h-full flex items-center justify-center cursor-pointer hover:bg-white/10">
           <div className="w-5 h-4 relative">
             <Image
-              src="/icons/battery.svg"
+              src="/icons/battery-icons8.png"
               alt="Battery"
               fill
-              className={isDarkMode ? "brightness-200" : ""}
+              className="brightness-0 invert"
             />
           </div>
         </div>
@@ -150,10 +163,10 @@ const MenuBar: React.FC<MenuBarProps> = ({ isDarkMode, toggleDarkMode }) => {
         <div className="px-1.5! h-full flex items-center justify-center cursor-pointer hover:bg-white/10">
           <div className="w-4 h-4 relative">
             <Image
-              src="/icons/wifi.svg"
+              src="/icons/wifi-icons8.png"
               alt="WiFi"
               fill
-              className={isDarkMode ? "brightness-200" : ""}
+              className="brightness-0 invert"
             />
           </div>
         </div>
@@ -162,16 +175,16 @@ const MenuBar: React.FC<MenuBarProps> = ({ isDarkMode, toggleDarkMode }) => {
         <div className="px-1.5! h-full flex items-center justify-center cursor-pointer hover:bg-white/10">
           <div className="w-4 h-4 relative">
             <Image
-              src="/icons/search.svg"
+              src="/icons/search-icons8.png"
               alt="Search"
               fill
-              className={isDarkMode ? "brightness-200" : ""}
+              className="brightness-0 invert"
             />
           </div>
         </div>
 
         {/* Date and Time - Combined as a single element */}
-        <div className="text-xs pl-2.5! h-full flex items-center cursor-pointer hover:bg-white/10 font-semibold">
+        <div className="text-xs h-full flex items-center cursor-pointer hover:bg-white/10 pl-2! font-semibold">
           {dateTimeDisplay}
         </div>
       </div>
