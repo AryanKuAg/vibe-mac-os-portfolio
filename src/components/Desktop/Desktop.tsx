@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
 import Window from '../../components/Window/Window';
+import ChromeWindow from '../../components/Window/ChromeWindow';
 import AboutMe from '../../components/Apps/AboutMe';
 import Projects from '../../components/Apps/Projects';
 import Contact from '../../components/Apps/Contact';
@@ -89,19 +90,38 @@ const Desktop: React.FC<DesktopProps> = ({ isDarkMode }) => {
       </div>
 
       {/* Windows */}
-      {desktopIcons.map((icon, index) => (
-        <Window
-          key={index}
-          title={icon.name}
-          isOpen={openWindows[icon.name] || false}
-          onClose={() => handleCloseWindow(icon.name)}
-          initialPosition={{ x: 100 + index * 50, y: 100 + index * 30 }}
-          initialSize={{ width: 700, height: 500 }}
-          isDarkMode={isDarkMode}
-        >
-          {icon.appComponent}
-        </Window>
-      ))}
+      {desktopIcons.map((icon, index) => {
+        // Use ChromeWindow for Projects, regular Window for others
+        if (icon.name === 'Projects') {
+          return (
+            <ChromeWindow
+              key={index}
+              title={icon.name}
+              isOpen={openWindows[icon.name] || false}
+              onClose={() => handleCloseWindow(icon.name)}
+              initialPosition={{ x: 100 + index * 50, y: 100 + index * 30 }}
+              initialSize={{ width: 900, height: 600 }}
+              isDarkMode={isDarkMode}
+            >
+              {icon.appComponent}
+            </ChromeWindow>
+          );
+        } else {
+          return (
+            <Window
+              key={index}
+              title={icon.name}
+              isOpen={openWindows[icon.name] || false}
+              onClose={() => handleCloseWindow(icon.name)}
+              initialPosition={{ x: 100 + index * 50, y: 100 + index * 30 }}
+              initialSize={{ width: 700, height: 500 }}
+              isDarkMode={isDarkMode}
+            >
+              {icon.appComponent}
+            </Window>
+          );
+        }
+      })}
     </motion.div>
   );
 };
