@@ -54,21 +54,12 @@ const Desktop: React.FC<DesktopProps> = ({ isDarkMode }) => {
 
   return (
     <motion.div
-      className={`flex-1 w-full h-[calc(100vh-6rem)] relative ${isDarkMode ? 'bg-[#1e1e1e]' : 'bg-[#f0f0f0]'}`}
+      className="flex-1 w-full h-[calc(100vh-6rem)] relative overflow-hidden bg-transparent"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.5, delay: 0.2 }}
     >
-      {/* Desktop background */}
-      <div
-        className="absolute inset-0 bg-cover bg-center"
-        style={{
-          backgroundImage: isDarkMode
-            ? 'url(https://512pixels.net/downloads/macos-wallpapers-6k/14-0-Dark-6k.jpg)'
-            : 'url(https://512pixels.net/downloads/macos-wallpapers-6k/14-0-Light-6k.jpg)',
-          backgroundSize: 'cover'
-        }}
-      />
+      {/* Desktop background is now in the main page component */}
 
       {/* Desktop icons */}
       <div className="relative z-10 p-4">

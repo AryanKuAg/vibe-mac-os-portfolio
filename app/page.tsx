@@ -26,15 +26,28 @@ export default function Home() {
   }, [isDarkMode]);
 
   return (
-    <div className={`min-h-screen w-full overflow-hidden ${isDarkMode ? 'bg-[#1e1e1e] text-white' : 'bg-[#f0f0f0] text-black'}`}>
-      {/* Menu Bar */}
-      <MenuBar isDarkMode={isDarkMode} toggleDarkMode={toggleDarkMode} />
+    <div className="min-h-screen w-full overflow-hidden relative">
+      {/* Wallpaper Background */}
+      <div
+        className="absolute inset-0 w-full h-full z-0"
+        style={{
+          backgroundImage: 'url(/wallpapers/macos-big-sur-apple-layers-fluidic-colorful-wwdc-stock-4096x2304-1455.jpg)',
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          backgroundRepeat: 'no-repeat'
+        }}
+      />
 
-      {/* Desktop */}
-      <Desktop isDarkMode={isDarkMode} />
+      <div className={`relative z-10 min-h-screen w-full ${isDarkMode ? 'text-white' : 'text-black'}`}>
+        {/* Menu Bar */}
+        <MenuBar isDarkMode={isDarkMode} toggleDarkMode={toggleDarkMode} />
 
-      {/* Dock */}
-      <Dock isDarkMode={isDarkMode} />
+        {/* Desktop */}
+        <Desktop isDarkMode={isDarkMode} />
+
+        {/* Dock */}
+        <Dock isDarkMode={isDarkMode} />
+      </div>
     </div>
   );
 }

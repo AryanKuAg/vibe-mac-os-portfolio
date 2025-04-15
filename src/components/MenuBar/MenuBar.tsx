@@ -34,7 +34,7 @@ const MenuBar: React.FC<MenuBarProps> = ({ isDarkMode, toggleDarkMode }) => {
 
   return (
     <motion.div
-      className={`h-6 w-full flex items-center justify-between px-3 ${isDarkMode ? 'bg-[#1e1e1e] text-white' : 'bg-[#f0f0f0] text-black'}`}
+      className={`h-6 w-full flex items-center justify-between px-3 backdrop-blur-md ${isDarkMode ? 'bg-black/20 text-white' : 'bg-white/20 text-black'}`}
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.5 }}
