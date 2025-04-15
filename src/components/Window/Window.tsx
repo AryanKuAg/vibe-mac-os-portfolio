@@ -28,22 +28,22 @@ const Window: React.FC<WindowProps> = ({
   const [size, setSize] = useState(initialSize);
   const [prevSize, setPrevSize] = useState(initialSize);
   const [prevPosition, setPrevPosition] = useState(initialPosition);
-  
+
   const dragControls = useDragControls();
   const windowRef = useRef<HTMLDivElement>(null);
-  
+
   const handleDragEnd = (event: MouseEvent, info: PanInfo) => {
     setPosition({
       x: position.x + info.offset.x,
       y: position.y + info.offset.y
     });
   };
-  
+
   const handleMinimize = () => {
     setIsMinimized(true);
     // Animation logic for minimizing to dock would go here
   };
-  
+
   const handleMaximize = () => {
     if (isFullscreen) {
       // Restore previous size and position
@@ -59,9 +59,9 @@ const Window: React.FC<WindowProps> = ({
     }
     setIsFullscreen(!isFullscreen);
   };
-  
+
   if (!isOpen || isMinimized) return null;
-  
+
   return (
     <motion.div
       ref={windowRef}
@@ -84,40 +84,49 @@ const Window: React.FC<WindowProps> = ({
       onDragEnd={handleDragEnd}
     >
       {/* Window title bar */}
-      <div 
-        className={`h-8 flex items-center justify-between px-3 ${isDarkMode ? 'bg-[#3c3c3c]' : 'bg-[#f0f0f0]'}`}
+      <div
+        className={`h-8 flex items-center justify-between px-3! ${isDarkMode ? 'bg-[#3c3c3c]' : 'bg-[#f0f0f0]'}`}
         onPointerDown={(e) => dragControls.start(e)}
       >
         {/* Window controls */}
-        <div className="flex items-center space-x-2">
-          <button 
-            onClick={onClose}
-            className="w-3 h-3 rounded-full bg-red-500 hover:bg-red-600 flex items-center justify-center"
+        <div className="flex items-center space-x-2! z-10">
+          <div
+            onClick={(e) => {
+              e.stopPropagation();
+              onClose();
+            }}
+            className="w-3 h-3 rounded-full bg-red-500 hover:bg-red-600 flex items-center justify-center cursor-pointer"
           >
             <span className="text-[8px] text-red-800 opacity-0 hover:opacity-100">×</span>
-          </button>
-          <button 
-            onClick={handleMinimize}
-            className="w-3 h-3 rounded-full bg-yellow-500 hover:bg-yellow-600 flex items-center justify-center"
+          </div>
+          <div
+            onClick={(e) => {
+              e.stopPropagation();
+              handleMinimize();
+            }}
+            className="w-3 h-3 rounded-full bg-yellow-500 hover:bg-yellow-600 flex items-center justify-center cursor-pointer"
           >
             <span className="text-[8px] text-yellow-800 opacity-0 hover:opacity-100">−</span>
-          </button>
-          <button 
-            onClick={handleMaximize}
-            className="w-3 h-3 rounded-full bg-green-500 hover:bg-green-600 flex items-center justify-center"
+          </div>
+          <div
+            onClick={(e) => {
+              e.stopPropagation();
+              handleMaximize();
+            }}
+            className="w-3 h-3 rounded-full bg-green-500 hover:bg-green-600 flex items-center justify-center cursor-pointer"
           >
             <span className="text-[8px] text-green-800 opacity-0 hover:opacity-100">+</span>
-          </button>
+          </div>
         </div>
-        
+
         {/* Window title */}
         <div className="absolute left-0 right-0 text-center text-sm font-medium">
           {title}
         </div>
       </div>
-      
+
       {/* Window content */}
-      <div className="p-4 overflow-auto" style={{ height: 'calc(100% - 2rem)' }}>
+      <div className="overflow-auto" style={{ height: 'calc(100% - 2rem)' }}>
         {children}
       </div>
     </motion.div>
