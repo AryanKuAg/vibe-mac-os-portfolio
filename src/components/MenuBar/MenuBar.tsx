@@ -57,7 +57,7 @@ const MenuBar: React.FC<MenuBarProps> = ({ isDarkMode, toggleDarkMode }) => {
               src="/icons/apple-logo.svg"
               alt="Apple logo"
               fill
-              className="brightness-0 invert"
+              className="brightness-0 invert pr-0.5! pb-0.5! scale-110"
             />
           </div>
         </div>
@@ -75,7 +75,7 @@ const MenuBar: React.FC<MenuBarProps> = ({ isDarkMode, toggleDarkMode }) => {
       {/* Right side - Status icons */}
       <div className="flex items-center h-full mr-4!">
         {/* Control Center */}
-        <div className="px-1.5 h-full flex items-center justify-center cursor-pointer hover:bg-white/10">
+        <div className="px-1.5! h-full flex items-center justify-center cursor-pointer hover:bg-white/10">
           <div className="w-4 h-4 relative">
             <Image
               src="/icons/control-center.svg"
@@ -87,7 +87,7 @@ const MenuBar: React.FC<MenuBarProps> = ({ isDarkMode, toggleDarkMode }) => {
         </div>
 
         {/* User Profile */}
-        <div className="px-1.5 h-full flex items-center justify-center cursor-pointer hover:bg-white/10">
+        <div className="px-1.5! h-full flex items-center justify-center cursor-pointer hover:bg-white/10">
           <div className="w-4 h-4 relative">
             <Image
               src="/icons/user-profile.svg"
@@ -99,7 +99,7 @@ const MenuBar: React.FC<MenuBarProps> = ({ isDarkMode, toggleDarkMode }) => {
         </div>
 
         {/* Screen */}
-        <div className="px-1.5 h-full flex items-center justify-center cursor-pointer hover:bg-white/10">
+        <div className="px-1.5! h-full flex items-center justify-center cursor-pointer hover:bg-white/10">
           <div className="w-4 h-4 relative">
             <Image
               src="/icons/screen.svg"
@@ -111,7 +111,7 @@ const MenuBar: React.FC<MenuBarProps> = ({ isDarkMode, toggleDarkMode }) => {
         </div>
 
         {/* Siri */}
-        <div className="px-1.5 h-full flex items-center justify-center cursor-pointer hover:bg-white/10">
+        <div className="px-1.5! h-full flex items-center justify-center cursor-pointer hover:bg-white/10">
           <div className="w-4 h-4 relative">
             <Image
               src="/icons/siri.svg"
@@ -123,7 +123,7 @@ const MenuBar: React.FC<MenuBarProps> = ({ isDarkMode, toggleDarkMode }) => {
         </div>
 
         {/* Dark Mode Toggle */}
-        <div onClick={toggleDarkMode} className="px-1.5 h-full flex items-center justify-center cursor-pointer hover:bg-white/10">
+        <div onClick={toggleDarkMode} className="px-1.5! h-full flex items-center justify-center cursor-pointer hover:bg-white/10">
           <div className="w-4 h-4 relative">
             <Image
               src={isDarkMode ? "/icons/sun.svg" : "/icons/moon.svg"}
@@ -135,7 +135,7 @@ const MenuBar: React.FC<MenuBarProps> = ({ isDarkMode, toggleDarkMode }) => {
         </div>
 
         {/* Battery */}
-        <div className="px-1.5 h-full flex items-center justify-center cursor-pointer hover:bg-white/10">
+        <div className="px-1.5! h-full flex items-center justify-center cursor-pointer hover:bg-white/10">
           <div className="w-5 h-4 relative">
             <Image
               src="/icons/battery.svg"
@@ -147,7 +147,7 @@ const MenuBar: React.FC<MenuBarProps> = ({ isDarkMode, toggleDarkMode }) => {
         </div>
 
         {/* WiFi */}
-        <div className="px-1.5 h-full flex items-center justify-center cursor-pointer hover:bg-white/10">
+        <div className="px-1.5! h-full flex items-center justify-center cursor-pointer hover:bg-white/10">
           <div className="w-4 h-4 relative">
             <Image
               src="/icons/wifi.svg"
@@ -159,7 +159,7 @@ const MenuBar: React.FC<MenuBarProps> = ({ isDarkMode, toggleDarkMode }) => {
         </div>
 
         {/* Search */}
-        <div className="px-1.5 h-full flex items-center justify-center cursor-pointer hover:bg-white/10">
+        <div className="px-1.5! h-full flex items-center justify-center cursor-pointer hover:bg-white/10">
           <div className="w-4 h-4 relative">
             <Image
               src="/icons/search.svg"
@@ -171,7 +171,7 @@ const MenuBar: React.FC<MenuBarProps> = ({ isDarkMode, toggleDarkMode }) => {
         </div>
 
         {/* Date and Time - Combined as a single element */}
-        <div className="text-xs px-2.5 h-full flex items-center cursor-pointer hover:bg-white/10 font-semibold">
+        <div className="text-xs pl-2.5! h-full flex items-center cursor-pointer hover:bg-white/10 font-semibold">
           {dateTimeDisplay}
         </div>
       </div>
