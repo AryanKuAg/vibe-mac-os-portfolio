@@ -25,13 +25,13 @@ const DockIcon: React.FC<DockIconProps> = ({ name, icon, onClick }) => {
       onHoverEnd={() => setIsHovered(false)}
       onClick={onClick}
     >
-      <div className="w-12 h-12 relative flex items-center justify-center">
+      <div className="w-14 h-14 relative flex items-center justify-center">
         <Image
           src={icon}
           alt={name}
-          width={48}
-          height={48}
-          className="rounded-lg"
+          width={56}
+          height={56}
+          className="drop-shadow-md"
         />
       </div>
       {isHovered && (
@@ -49,19 +49,19 @@ const DockIcon: React.FC<DockIconProps> = ({ name, icon, onClick }) => {
 };
 
 const Dock: React.FC<DockProps> = ({ isDarkMode }) => {
-  // Define dock icons with SVG icons
+  // Define dock icons with authentic macOS icons
   const dockIcons = [
-    { name: 'Finder', icon: '/icons/dock/finder.svg' },
-    { name: 'Safari', icon: '/icons/dock/safari.svg' },
-    { name: 'Mail', icon: '/icons/dock/mail.svg' },
-    { name: 'Messages', icon: '/icons/dock/messages.svg' },
-    { name: 'Maps', icon: '/icons/dock/maps.svg' },
-    { name: 'Photos', icon: '/icons/dock/photos.svg' },
-    { name: 'Calendar', icon: '/icons/dock/calendar.svg' },
-    { name: 'Notes', icon: '/icons/dock/notes.svg' },
-    { name: 'Terminal', icon: '/icons/dock/terminal.svg' },
-    { name: 'App Store', icon: '/icons/dock/appstore.svg' },
-    { name: 'Settings', icon: '/icons/dock/settings.svg' }
+    { name: 'Finder', icon: '/macos-icons/png/finder.png' },
+    { name: 'Safari', icon: '/macos-icons/png/safari.png' },
+    { name: 'Mail', icon: '/macos-icons/png/mail.png' },
+    { name: 'Messages', icon: '/macos-icons/png/messages.png' },
+    { name: 'Maps', icon: '/macos-icons/png/maps.png' },
+    { name: 'Photos', icon: '/macos-icons/png/photos.png' },
+    { name: 'Calendar', icon: '/macos-icons/png/calendar.png' },
+    { name: 'Notes', icon: '/macos-icons/png/notes.png' },
+    { name: 'Terminal', icon: '/macos-icons/png/terminal.png' },
+    { name: 'App Store', icon: '/macos-icons/png/appstore.png' },
+    { name: 'Settings', icon: '/macos-icons/png/settings.png' }
   ];
 
   return (

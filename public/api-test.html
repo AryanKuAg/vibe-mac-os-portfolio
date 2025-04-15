@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>macOSicons API Simple Test</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            padding: 20px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        h1 {
+            color: #333;
+        }
+        button {
+            padding: 10px 15px;
+            background-color: #0071e3;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-bottom: 20px;
+        }
+        #status {
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            display: none;
+        }
+        .success {
+            background-color: #d4edda;
+            color: #155724;
+        }
+        .error {
+            background-color: #f8d7da;
+            color: #721c24;
+        }
+        pre {
+            background-color: #f8f9fa;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+        }
+        .loading {
+            display: none;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>macOSicons API Simple Test</h1>
+    
+    <button id="test-button">Test API Connection</button>
+    
+    <div id="loading" class="loading">Testing API connection...</div>
+    
+    <div id="status"></div>
+    
+    <h2>Response Data:</h2>
+    <pre id="response-data">No data yet. Click the button above to test the API.</pre>
+    
+    <script>
+        const API_KEY = '82cb0cac313a8fb423e48f9af95da439446060ae77849615bf61c68ad163d5f6';
+        const API_URL = 'https://api.macosicons.com/api/search';
+        
+        const testButton = document.getElementById('test-button');
+        const statusDiv = document.getElementById('status');
+        const responseDataPre = document.getElementById('response-data');
+        const loadingDiv = document.getElementById('loading');
+        
+        testButton.addEventListener('click', testApiConnection);
+        
+        async function testApiConnection() {
+            // Clear previous results
+            statusDiv.style.display = 'none';
+            statusDiv.className = '';
+            responseDataPre.textContent = 'Testing...';
+            loadingDiv.style.display = 'block';
+            
+            try {
+                // Simple query for 'finder'
+                const requestBody = {
+                    query: 'finder'
+                };
+                
+                console.log('Making API request to:', API_URL);
+                console.log('With request body:', JSON.stringify(requestBody));
+                
+                const response = await fetch(API_URL, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'x-api-key': API_KEY
+                    },
+                    body: JSON.stringify(requestBody)
+                });
+                
+                console.log('Response status:', response.status);
+                
+                if (!response.ok) {
+                    const errorText = await response.text();
+                    console.error('Error response:', errorText);
+                    
+                    // Display error
+                    statusDiv.textContent = `API request failed with status ${response.status}`;
+                    statusDiv.className = 'error';
+                    responseDataPre.textContent = errorText || 'No error details available';
+                } else {
+                    // Parse and display successful response
+                    const data = await response.json();
+                    console.log('API response data:', data);
+                    
+                    statusDiv.textContent = 'API request successful!';
+                    statusDiv.className = 'success';
+                    responseDataPre.textContent = JSON.stringify(data, null, 2);
+                    
+                    // If we have hits, display the first icon's details
+                    if (data.hits && data.hits.length > 0) {
+                        const firstIcon = data.hits[0];
+                        console.log('First icon:', firstIcon);
+                        
+                        // You could display the icon here if needed
+                    }
+                }
+            } catch (error) {
+                console.error('Error testing API connection:', error);
+                
+                statusDiv.textContent = `Error: ${error.message}`;
+                statusDiv.className = 'error';
+                responseDataPre.textContent = error.stack || error.message;
+            } finally {
+                statusDiv.style.display = 'block';
+                loadingDiv.style.display = 'none';
+            }
+        }
+    </script>
+</body>
+</html>
